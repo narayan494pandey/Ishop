@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        header {
+            background-color: slategrey;
+        }
+
+        .leftPanel {
+            width: 300px;
+            height: 350px;
+            padding: 20px;
+            float: left;
+            border: solid 2px darkcyan;
+            border-radius: 10px;
+            background-color: cyan;
+        }
+
+        .rightPanel {
+            width: 600px;
+            padding: 20px;
+            float: right;
+            position: relative;
+        }
+
+        footer {
+            position: relative;
+
+        }
+
+        .middlePanel {
+            width: 300px;
+            margin-left: 10px;
+        }
+
+        #cart {
+            border: 1px solid slateblue;
+            background-color: indianred;
+        }
+    </style>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular/angular-route.js"></script>
+    <script>
+        var app = angular.module("IShop", ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    templateUrl: 'home.html'
+
+                })
+                .when("/products", {
+                    templateUrl: "products.html",
+                })
+                .when("/login", {
+                    templateUrl: "Login.html",
+                    controller: "LoginController"
+                })
+                .when("/register", {
+                    templateUrl: "Register.html",
+                    controller: "RegisterController"
+                })
+                .when("/home", {
+                    templateUrl: "home.html"
+                })
+        })
+        app.controller("RegisterController", function ($scope, $http) {
+            $scope.SubmitClick = function (user) {
+                $http.post("http://127.0.0.1:8080/RegisterUser", { UserName: user.UserName, Password: user.Password, Email: user.Email, City: user.City, State: user.State, PinCode: user.PinCode })
+                location.href = "index3.html";
+            }
+        })
+        app.controller("HomeController", function ($scope, $http) {
+            $scope.products = [];
+            $scope.categories = [];
+            $http.get("http://127.0.0.1:8080/ProductDetails")
+                .then(function (response) {
+                    $scope.products = response.data;
+                })
+            $http.get("http://127.0.0.1:8080/CategoryDetails")
+                .then(function (response) {
+                    $scope.categories = response.data;
+                })
+            $scope.selectedCategory = 0;
+            $scope.GetCategory = function (obj) {
+                $scope.selectedCategory = obj.categoryId;
+            }
+            $scope.txtQty = {};
+            $scope.cartItems = [];
+            $scope.AddToCart = function (item) {
+                $scope.cartItems.push(item);
+            }
+            $scope.Delete = function (index) {
+                var verify = confirm("Are you sure , want to Delete?");
+                if (verify == true) {
+                    $scope.cartItems.splice(index, 1);
+                }
+            }
+        })
+    </script>
+    <script>
+        var show = false;
+        function closeCart() {
+            document.getElementById("cart").style.display = "none";
+        }
+        function showCart() {
+            this.show = !this.show;
+            if (this.show) {
+                document.getElementById("cart").style.display = "block";
+
+            } else {
+                document.getElementById("cart").style.display = "none";
+            }
+        }
+    </script>
+</head>
+
+<body ng-app="IShop" ng-controller="HomeController" onload="closeCart()">
+    <div class="container-fluid">
+        <header>
+            <h2 class="text-center">Shopping Online - ISHOP</h2>
+            <div class="btn-toolbar bg-secondary text-white  justify-content-between">
+                <div class="btn-group">
+                    <a href="#!home" class="btn btn-primary">Home</a>
+                    <a href="#!products" class="btn btn-primary">Products</a>
+                    <a href="#!login" class="btn btn-primary">Login</a>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control-lg" ng-model="search">
+                </div>
+                <div class="btn-group" align="right">
+                    <a href="#!register" class="btn btn-primary">Register</a>
+                    <a href="#" class="btn btn-primary" aria-label="0 items in cart" onclick="showCart()">MyCart</a>
+                    <a class="btn btn-success btn-sm ml-3" href="cart.html">
+                        <image src="images/cart1.png" width="50px" height="40px">Cart</image>
+                        <span class="badge badge-light">3</span>
+                    </a>
+                </div>
+                <!--Carousel-->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li class="active" data-target="#myCarousel" data-slide-to="0"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ul>
+                    <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <img src="../Images/slide1.jpg" width="1300" height="250">
+                        </div>
+                        <div class="carousel-item active">
+                            <img src="../Images/slide2.jpg" width="1300" height="250">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../Images/slide3.png" width="1300" height="250">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../Images/slide4.jpg" width="1300" height="250">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+        </header>
+        <section>
+            <div class="d-flex flex-row">
+                <div class="leftPanel">
+                    <label>Top Categories</label>
+                    <ul>
+                        <li ng-repeat="item in categories">
+                            <a href="" ng-click="GetCategory(item)"> {{item.categoryName}} </a>
+                        </li>
+                    </ul>
+                    <label>Available Categories</label>
+                    <select ng-model="selectedCategory" class="form-control">
+                        <option ng-repeat="item in categories" value="{{item.categoryId}}">
+                            {{item.categoryName}}
+                        </option>
+                    </select>
+                    <label>Search</label>
+                    <input type="text" class="form-control" ng-model="search">
+                </div>
+                <div class="middlePanel" ng-view>
+
+                </div>
+                <div class="rightPanel">
+                    <div>
+                        <div class="card" ng-repeat="item in products">
+                            <div ng-if="item.CatId==selectedCategory || item.Name==search">
+                                <div class="card-header">
+                                    <h2>{{item.Name}}</h2>
+                                </div>
+                                <div class="card-body">
+                                    <img src="{{item.photo}}" width="50" height="50">
+                                    <p>
+                                        Quantity:
+                                        <input type="number" ng-model="txtQty.id">
+                                    </p>
+
+                                </div>
+                                <div class="card-footer">
+                                    <h3>{{item.Price | currency:'&#8377;'}}</h3>
+                                    <button ng-click="AddToCart(item)" class="btn btn-success">Add to Cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div>
+            <div class="row">
+                <div class="card col-sm-4" ng-repeat="item in products">
+
+                    <div class="card-header">
+                        <h2>{{item.Name}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <img src="{{item.photo}}" width="200" height="200">
+                        <p>
+                            Quantity:
+                            <input type="number" ng-model="txtQty.id">
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <h3>{{item.Price | currency:'&#8377;'}}</h3>
+                        <button ng-click="AddToCart(item)" class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cart">
+            <h3 style="text-align:center">Your Cart Items</h3>
+            <table class="table table-hover">
+                <thead>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Amount</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in cartItems">
+                        <td><img src="{{product.photo}}" width="100" height="100" class="img-thumbnail">
+                        </td>
+                        <td>{{product.Name}}</td>
+                        <td>{{product.Price  | currency:'&#8377;'}}</td>
+                        <td>{{txtQty.id}}</td>
+                        <td>{{txtQty.id*product.Price | number:2}}</td>
+                        <td><button ng-click="Delete($index)" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="page-footer font-small black pt-4">
+            <div class="card-deck">
+                <div class="card" width="200px" height="400px">
+                    <div class="card-header">
+                        <h2>Contact_Us</h2>
+
+                    </div>
+                    <div class="card-body">
+                        <address>
+                            <h4>Hyderabad,Ameerpet,500016</h4>
+                            <a href="mailto:ishop@gmail.com">Email-Us:mailto:ishop@gmail.com</a>
+                            <p>ContactNo:9876543210</p>
+
+                        </address>
+                    </div>
+                    <div class="card-footer">
+                        <h3>Feel Happy To Contact Us</h3>
+
+                    </div>
+                </div>
+                <div class="card" width="200px" height="400px">
+                    <div class="card-header">
+                        <h2><a href="info.html">Information</a></h2>
+
+                    </div>
+                    <div class="card-body">
+                        <h3><a href="return.html">Return Policy</a></h3>
+                        <h3> <a href="privacy.html">Privacy Notice</a></h3>
+                    </div>
+                    <div class="card-footer">
+                        <h3><a href="terms.html">terms and Conditions</a></h3>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer-copyright text-center py-3">
+                &copy; copyright 2019
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

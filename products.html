@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var app = angular.module("DemoApp", []);
+        app.controller("ProductsController", function ($scope, $http) {
+            $scope.products = [];
+            $http.get("http://127.0.0.1:8080/productDetails")
+                .then(function (response) {
+                    $scope.products = response.data;
+                })
+
+        })
+    </script>
+</head>
+
+<body ng-app="DemoApp" ng-controller="ProductsController">
+    <div class="container">
+        <div class="row">
+            <div class="card col-sm-4" ng-repeat="item in products">
+                <div class="card-header">
+                    <h2>{{item.Name}}</h2>
+                </div>
+                <div class="card-body">
+                    <img ng-src="{{item.photo}}" width="200" height="200" class="img-thumbnail">
+                    <h5>
+                        {{item.Description}}
+                    </h5>
+                </div>
+                <div class="card-footer">
+                    <h2>{{item.Price | currency:'&#8377;'}}</h2>
+                    <h3>{{item.Manufactactured | date}}</h3>
+                    <div>
+                        <button class="btn btn-primary"><img ng-src="../Images/add.png" ng-click="AddCounter(item)"
+                                width="30" height="30"></button>
+
+                        <button class="btn btn-primary" ng-click="AddToCart(item)">Add to
+                            Cart</button>
+                        <button class="btn btn-primary"><img ng-src="../Images/minus.png" ng-click="MinusCounter(item)"
+                                width="30" height="30"></button>
+
+                        <button class="btn btn-success">Details</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

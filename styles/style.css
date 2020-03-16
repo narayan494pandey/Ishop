@@ -1,0 +1,85 @@
+section{
+    background-color: cornflowerblue;
+    fill-opacity: .5;
+}
+header{
+    background-color: mediumpurple;
+}
+button.btn.btn-primary{
+    height:64px;
+}
+span.carousel-control-next-icon{
+   background-color: blueviolet;
+    opacity: 1;
+    width:40px;
+    height: 40px;
+
+}
+span.carousel-control-prev-icon{
+   background-color: blueviolet;
+    opacity: 1;
+    width:40px;
+    height: 40px;
+}
+ul.carousel-indecators{
+    background-color: rebeccapurple;
+}
+ li.active{
+    background-color: rebeccapurple;
+}
+div.carousel-item{
+    width:100%;
+    height:300px;
+    opacity:.9;
+}
+.leftPanel {
+    width: 300px;
+    height: 350px;
+    padding: 20px;
+    float: left;
+    border: solid 2px darkcyan;
+    border-radius: 10px;
+    background-color:cyan;
+}
+
+/*.rightPanel {
+    display: inline-flex;
+    width: 300px;
+    padding: 20px;
+    float: right;
+    position: relative;
+}*/
+
+footer {
+    position: relative;
+    background-color: #232F3E;
+    color: white;
+    margin: 0px;
+}
+
+a {
+    color: white;
+}
+div.modal-content {
+    border: 2px solid slateblue;
+    background-color:whitesmoke;
+    
+}
+div.modal-header {
+    justify-content: center;
+    background-color: slateblue;
+      
+  }
+  div.modal-body {
+    background-color: pink;
+    border:0px;
+      
+  }
+div.modal-footer {
+  justify-content:space-between;
+  background-color: purple;
+    
+}
+.modal-title {
+    color: black;
+}
