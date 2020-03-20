@@ -1,12 +1,10 @@
+
 section{
     background-color: cornflowerblue;
     fill-opacity: .5;
 }
 header{
     background-color: mediumpurple;
-}
-button.btn.btn-primary{
-    height:64px;
 }
 span.carousel-control-next-icon{
    background-color: blueviolet;
@@ -82,4 +80,23 @@ div.modal-footer {
 }
 .modal-title {
     color: black;
+}
+span.badge{
+    font-size: 100%;
+}
+.btn.btn-warning{
+    background: white;
+}
+select.ng-pristine.ng-valid.ng-not-empty.ng-touched{
+    color:blueviolet;
+    font-weight:700;
+}
+.btn-group.btn-group__search{
+    height:60px;
+}
+.btn-group.btn-group__search select{
+    width:60px;
+}
+.btn-group.btn-group__search input{
+    width:350px;
 }

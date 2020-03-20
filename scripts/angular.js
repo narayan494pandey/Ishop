@@ -35,8 +35,8 @@ app.controller("LoginController", function ($scope, $http) {
     $scope.Login = function () {
         $scope.txtName = "";
         $scope.txtPwd = "";
-        alert($scope.txtName);
         for (var i = 0; i < $scope.userDetails.length; i++) {
+            alert($scope.txtName);
             if ($scope.userDetails[i].UserName == $scope.txtName && $scope.userDetails[i].Password == $scope.txtPwd) {
                 location.href = "index.html";
                 break;
@@ -61,11 +61,26 @@ app.controller("HomeController", function ($scope, $http) {
     $scope.GetCategory = function (obj) {
         $scope.selectedCategory = obj.categoryId;
     }
-    $scope.AddCounter = function (item) { item.quantity++; };
-    $scope.MinusCounter = function (item) { item.quantity--; };
     $scope.cartItems = [];
     $scope.AddToCart = function (item) {
         $scope.cartItems.push(item);
+        $scope.count = function () {
+            var count = 0;
+            count = $scope.cartItems.length;
+
+            return count;
+        };
+        $scope.AddCounter = function (item) { item.quantity++; };
+        $scope.MinusCounter = function (item) { item.quantity--; };
+
+    }
+    $scope.total = function () {
+        var total = 0;
+        angular.forEach($scope.cartItems, function (product) {
+            total += product.quantity * product.Price;
+        })
+
+        return total;
     }
     $scope.Delete = function (index) {
         var verify = confirm("Are you sure , want to Delete?");
@@ -73,7 +88,6 @@ app.controller("HomeController", function ($scope, $http) {
             $scope.cartItems.splice(index, 1);
         }
     }
-
 })
 app.controller('ScrollController', ['$scope', '$location', '$anchorScroll',
     function ($scope, $location, $anchorScroll) {
