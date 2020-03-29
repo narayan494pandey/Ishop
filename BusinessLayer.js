@@ -39,12 +39,12 @@ app.post("/RegisterUser", function (req, res) {
         }
     })
 })
-/*app.post("/UserLogin",function(req,res){
-    mongoClient.connect(url,function(err,db){
-        if(!err){
+/*app.post("/UserLogin", function (req, res) {
+    mongoClient.connect(url, function (err, db) {
+        if (!err) {
             var dbo = db.db("ishopdb");
-            dbo.collection("tbllogin").insertOne({userName:req.body.userName, Password: req.body.Password,_id:req.body.id},function(err,result){
-                  if (!err) {
+            dbo.collection("tbllogin").insertOne({ userName: req.body.userName, Password: req.body.Password }, function (err, result) {
+                if (!err) {
                     console.log("Login Successfully..");
                 } else {
                     console.log(err);
@@ -52,21 +52,7 @@ app.post("/RegisterUser", function (req, res) {
             })
         }
     })
-});
-
-app.get("/UserLogin", function (req, res) {
-    mongoClient.connect(url, function (err, db) {
-        var dbo = db.db("ishopdb");
-        dbo.collection("tbllogin").find({}).toArray(function (err, documents) {
-            if (!err) {
-                res.send(documents);
-            } else {
-                console.log(err);
-            }
-        })
-    })
-})
-*/
+});*/
 
 
 app.get("/userDetails", function (req, res) {

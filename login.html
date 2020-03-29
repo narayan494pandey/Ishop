@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="node_modules/angular/angular.js"></script>
     <script>
-        var app = angular.module("DemoApp", []);
+        var app = angular.module("Ishop", []);
         app.controller("LoginController", function ($scope, $http) {
             $scope.userDetails = [];
             $http.get("http://127.0.0.1:8080/userDetails")
@@ -14,7 +14,7 @@
                 })
             $scope.txtName = "";
             $scope.txtPwd = "";
-            $scope.Login = function () {
+            $scope.Login = function (user) {
                 for (var i = 0; i < $scope.userDetails.length; i++) {
                     if ($scope.userDetails[i].UserName === $scope.txtName && $scope.userDetails[i].Password === $scope.txtPwd) {
                         console.log($scope.userDetails[i].UserName);
@@ -31,18 +31,16 @@
     </script>
 </head>
 
-<body ng-app="DemoApp" ng-controller="LoginController">
-    <fieldset>
-        <legend>Login</legend>
+<body ng-app="Ishop" ng-controller="LoginController">
+    <form method="post" ng-submit="Login()" class="form-group">
         <dl>
             <dt>User Name</dt>
             <dd><input type="text" ng-model="txtName"></dd>
             <dt>Password</dt>
             <dd><input type="password" ng-model="txtPwd"></dd>
         </dl>
-        <br>
-        <button ng-click="Login()">Login</button>
-    </fieldset>
+        <button class="btn btn-primary">Login</button>
+    </form>
 </body>
 
 </html>

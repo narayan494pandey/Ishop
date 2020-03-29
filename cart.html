@@ -85,3 +85,101 @@
 </body>
 
 </html>
+
+
+<!--Logincontroller.js
+
+controller.js file is use to show the data on the view.
+
+LoginApp.controller('LoginController', ['$scope', ' MyService 'function($scope, MyService) {  
+    $scope.submit = function() {  
+        var UserData = {  
+            Email: $scope.Email,  
+            Password: $scope.Password,  
+        }  
+        MyService.LoginValidate(UserData).then(function(pl) {  
+            //result data  
+            alert(pl.data);  
+        });  
+    }  
+}]);-->
+<!--Loginservice.js
+
+This JavaScript file "factory.js" for fetching the data from the database and provide it to the controller.
+
+angular.module('LoginApp').service('LoginService', function($http) {  
+    this.LoginValidate = function(UserData) {  
+        var result = $http({  
+            method: "Post",  
+            url: --XXXXXXXXXXXXXXXXXXX’ //pass UserData values to class file  
+            data: save  
+        });  
+        return result;  
+    }  
+});  
+
+
+public ViewResult LoginForm() {  
+    return View();  
+}  
+//pass and check tha value  
+public JsonResult Loginvalidate(Userdata) {  
+        HttpClient client = new HttpClient();  
+        string _url = ConfigurationManager.AppSettings["webapibaseurl"];  
+        client.BaseAddress = new Uri(_url);  
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
+        MediaTypeFormatter jsonFormatter = new JsonMediaTypeFormatter();  
+        HttpResponseMessage response = client.GetAsync(“URL”).Result;  
+        string content1 = response.Content.ReadAsStringAsync().Result;  
+        if (response.StatusCode.ToString() == "OK") {  
+            return Json(content1, JsonRequestBehavior.AllowGet);  
+        }  
+
+
+
+        <!DOCTYPE html>  
+<html>  
+  
+<head>  
+    <title>Login</title>  
+    <script src="~/Scripts/angular.min.js"></script>  
+    <script src="~/Scripts/Angular/Module.js"></script>  
+    <script src="~/Scripts/Angular/Logincontroller.js"></script>  
+    <script src="~/Scripts/Angular/Loginservice.js"></script>  
+</head>  
+  
+<body ng-app=" LoginApp ">  
+    <div ng-controller="LoginController">  
+        <form name="loginform">  
+            <div style="color:green">{{message}}</div>  
+            <table>  
+                <tr>  
+                    <td>User Name</td>  
+                    <td><input type="text" ng-model="Email" name="Email" /></td>  
+                </tr>  
+                <tr>  
+                    <td>Password</td>  
+                    <td><input type="text" ng-model="Password" name="Pin" /></td>  
+                </tr>  
+                <tr>  
+                    <td></td>  
+                    <td><input type="submit" ng-click="submit()" /></td>  
+                </tr>  
+            </table>  
+        </form>  
+    </div>  
+</body>  
+  
+</html> 
+
+
+
+
+public ActionResult Index() {  
+    if (Session["Email"] != null) {  
+        return View();  
+    } else {  
+        return RedirectToAction("LoginView");  
+    }  
+}   
+-->

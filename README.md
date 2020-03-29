@@ -17,10 +17,8 @@ create Document ishopdb
 
 Run command :
 1)npm install
-2) npm install bootstrap
-3)npm install jquery
-4) npm install angular
-5) npm install express
+2)node BusinessLayer.js
+
 
 
 

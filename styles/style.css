@@ -29,6 +29,7 @@ div.carousel-item{
     width:100%;
     height:300px;
     opacity:.9;
+    
 }
 .leftPanel {
     width: 300px;
@@ -39,6 +40,13 @@ div.carousel-item{
     border-radius: 10px;
     background-color:cyan;
 }
+.card-body>img:hover{
+    width:250px;
+    height:200px;
+    transition:2s;
+    transform: scale(1.1);
+}
+
 
 /*.rightPanel {
     display: inline-flex;
@@ -95,8 +103,73 @@ select.ng-pristine.ng-valid.ng-not-empty.ng-touched{
     height:60px;
 }
 .btn-group.btn-group__search select{
-    width:60px;
+    width:68px;
 }
 .btn-group.btn-group__search input{
     width:350px;
 }
+
+
+/*@media only screen and (max-width: 400px) {
+    .btn-group.btn-group__search input{
+        width:100px;
+    }
+    .btn-group.btn-group__search select{
+        width:50px;
+    }
+  }*/
+
+
+/* -webkit-, -moz-, -o- vendor prefixes omitted for brevity.
+    See http://css-tricks.com/snippets/css/keyframe-animation-syntax/
+    */
+   /* .slidein-from-right {
+        animation: slidein-from-right 500ms;
+    }
+    @keyframes slidein-from-right {
+        from {
+            margin-left: 100%;
+            width: 300%;
+            opacity: 0;
+        }
+        to {
+            margin-left: 0%;
+            width: 100%;
+            opacity: 1;
+        }
+    }
+    .slidein-from-left {
+        animation: slidein-from-left 500ms;
+    }
+    @keyframes slidein-from-left {
+        from {
+            margin-right: 100%;
+            width: 300%;
+            opacity: 0;
+        }
+        to {
+            margin-right: 0%;
+            width: 100%;
+            opacity: 1;
+        }
+    }*/
+    /*app.controller("LoginController", function ($scope, $http) {
+    $scope.userDetails = [];
+    $http.get("http://127.0.0.1:8080/userDetails")
+        .then(function (response) {
+            $scope.userDetails = response.data;
+        })
+    $scope.Login = function () {
+        $scope.txtName = "";
+        $scope.txtPwd = "";
+        for (var i = 0; i < $scope.userDetails.length; i++) {
+            alert($scope.txtName);
+            if ($scope.userDetails[i].UserName == $scope.txtName && $scope.userDetails[i].Password == $scope.txtPwd) {
+                location.href = "index.html";
+                break;
+            } else {
+                location.href = "error.html";
+            }
+        }
+    }
+})*/

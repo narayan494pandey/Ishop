@@ -32,14 +32,16 @@ app.controller("LoginController", function ($scope, $http) {
         .then(function (response) {
             $scope.userDetails = response.data;
         })
+    $scope.txtName = "";
+    $scope.txtPwd = "";
     $scope.Login = function () {
-        $scope.txtName = "";
-        $scope.txtPwd = "";
         for (var i = 0; i < $scope.userDetails.length; i++) {
-            alert($scope.txtName);
-            if ($scope.userDetails[i].UserName == $scope.txtName && $scope.userDetails[i].Password == $scope.txtPwd) {
+            if ($scope.userDetails[i].UserName === $scope.txtName && $scope.userDetails[i].Password === $scope.txtPwd) {
+                console.log($scope.userDetails[i].UserName);
+                console.log($scope.txtName);
                 location.href = "index.html";
                 break;
+
             } else {
                 location.href = "error.html";
             }
