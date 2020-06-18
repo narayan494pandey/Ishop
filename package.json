@@ -4,7 +4,7 @@
   "description": "git init - Create a new git repo\r git status - View the changes to your project code\r git add - Add files to staging area\r git commit - Creates a new commit with files from staging area\r git log - View recent commits\r # Project Setup",
   "main": "BusinessLayer.js",
   "dependencies": {
-    "angular": "^1.7.9",
+    "angular": "^1.8.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
