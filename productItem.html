@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <head>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
     <script src="node_modules/angular/angular.js"></script>
     <script>
-        var app = angular.module("ShoppingApp", []);
-        app.controller("HomeController", function ($scope, $http) {
-            $scope.products = [];
-            $http.get("http://127.0.0.1:8080/ProductDetails")
-                .then(function (response) {
-                    $scope.products = response.data;
-                })
-        })
-
+      var app = angular.module("ShoppingApp", []);
+      app.controller("HomeController", function ($scope, $http) {
+        $scope.products = [];
+        $http
+          .get("http://127.0.0.1:8081/ProductDetails")
+          .then(function (response) {
+            $scope.products = response.data;
+          });
+      });
     </script>
-</head>
+  </head>
 
-<body ng-app="ShoppingApp" ng-controller="HomeController">
-
+  <body ng-app="ShoppingApp" ng-controller="HomeController">
     <div class="row">
-        <div class="card col-sm-6" ng-repeat="item in products">
-            <div class="card-header">
-                <h2>{{item.Name}}</h2>
-            </div>
-            <div class="card-body">
-                <img src="{{item.photo}}" width="200" height="200">
-            </div>
-            <div class="card-footer">
-                <h3>{{item.Price}}</h3>
-            </div>
+      <div class="card col-sm-6" ng-repeat="item in products">
+        <div class="card-header">
+          <h2>{{item.Name}}</h2>
         </div>
+        <div class="card-body">
+          <img src="{{item.photo}}" width="200" height="200" />
+        </div>
+        <div class="card-footer">
+          <h3>{{item.Price}}</h3>
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

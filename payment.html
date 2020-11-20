@@ -1,127 +1,175 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-</head>
-<style>
+  <head>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+  </head>
+  <style>
     marquee {
-        background: cornflowerblue;
-        text-align: center;
-        scroll-behavior: auto;
-        height: 50px;
+      background: cornflowerblue;
+      text-align: center;
+      scroll-behavior: auto;
+      height: 50px;
     }
 
-    tr:first-of-type {
-        background: red;
+   /* tr:first-of-type {
+      background: red;
     }
 
     tr:last-child {
-        background: yellowgreen;
+      background: yellowgreen;
     }
 
     span:only-of-type {
-        background-color: teal;
+      background-color: teal;
     }
 
     span:only-child {
-        background-color: red;
-    }
+      background-color: red;
+    }*/
 
     body {
-        background-image: url("./images/caskless.jpg");
-        background-repeat: repeat;
-        padding: 50px;
-        border: 2px solid yellowgreen;
-        background-origin: border-box;
-        backface-visibility: unset;
+      /* background-image: url("./images/caskless.jpg");*/
+      background-color: cornsilk;
+      /*background-repeat: repeat;
+      padding: 50px;
+      border: 2px solid yellowgreen;
+      background-origin: border-box;
+      backface-visibility: unset;*/
     }
 
     table {
-        background: blueviolet;
+      background: darkcyan;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <div class="container">
-        <marquee loop="5">Select Payment Method</marquee>
-        <table class="table table-hover">
+      <marquee loop="5"><h1>Select Payment Method</h1></marquee>
+      <table class="table table-hover">
+        <tr>
+          <th>Debit Catd</th>
+          <td>
+            <input type="radio" id="visa" name="DebitCard" value="visa" />
+            <label for="visa"
+              ><span>Visa:</span
+              ><img src="Images/visa.png" width="175px" height="80px"
+            /></label>
+          </td>
+          <td>
+            <input
+              type="radio"
+              id="mastercard"
+              name="DebitCard"
+              value="mastercard"
+            />
+            <label for="mastercard"
+              ><span>MasterCard:</span
+              ><img src="Images/mastercard.png" width="175px" height="80px"
+            /></label>
+          </td>
+          <td>
+            <input
+              type="radio"
+              id="rupaycard"
+              name="DebitCard"
+              value="rupaycard"
+            />
+            <label for="rupaycard"
+              ><span>RupayCard:</span
+              ><img src="Images/Rupay.jpg" width="175px" height="80px"
+            /></label>
+          </td>
+        </tr>
 
-            <tr>
-                <th>Debit Catd</th>
-                <td>
-                    <input type="radio" id="visa" name="DebitCard" value="visa">
-                    <label for="visa"><span>Visa:</span><img src="Images/visa.png" width="175px" height="80px"></label>
-                </td>
-                <td>
-                    <input type="radio" id="mastercard" name="DebitCard" value="mastercard">
-                    <label for="mastercard"><span>MasterCard:</span><img src="Images/mastercard.png" width="175px"
-                            height="80px"></label>
-                </td>
-                <td><input type="radio" id="rupaycard" name="DebitCard" value="rupaycard">
-                    <label for="rupaycard"><span>RupayCard:</span><img src="Images/Rupay.jpg" width="175px"
-                            height="80px"></label>
-                </td>
+        <tr>
+          <th>Wallet</th>
+          <td>
+            <input type="radio" id="paypal" name="Wallet" value="paypal" />
+            <label for="paypal"
+              ><span>Paypal:</span
+              ><img src="Images/paypal.png" width="175px" height="80px"
+            /></label>
+          </td>
 
+          <td>
+            <input type="radio" id="paytm" name="Wallet" value="paytm" />
+            <label for="paytm"
+              ><span>Paytm:</span
+              ><img src="Images/paytm.jpg" width="175px" height="80px"
+            /></label>
+          </td>
 
-            </tr>
+          <td>
+            <input type="radio" id="amazon" name="Wallet" value="amazon" />
+            <label for="amazon"
+              ><span>Amazon:</span
+              ><img src="Images/amazonPay.jpg" width="175px" height="80px"
+            /></label>
+          </td>
+        </tr>
 
-            <tr>
-                <th>Wallet</th>
-                <td> <input type="radio" id="paypal" name="Wallet" value="paypal">
-                    <label for="paypal"><span>Paypal:</span><img src="Images/paypal.png" width="175px"
-                            height="80px"></label></td>
-
-                <td><input type="radio" id="paytm" name="Wallet" value="paytm">
-                    <label for="paytm"><span>Paytm:</span><img src="Images/paytm.jpg" width="175px"
-                            height="80px"></label></td>
-
-
-                <td><input type="radio" id="amazon" name="Wallet" value="amazon">
-                    <label for="amazon"><span>Amazon:</span><img src="Images/amazonPay.jpg" width="175px"
-                            height="80px"></label>
-                </td>
-            </tr>
-
-            <tr>
-                <th>Net Banking</th>
-                <td><input type="radio" id="sbi" name="NetBanking" value="sbi">
-                    <label for="sbi"><span>Sbi:</span><img src="Images/sbi.png" width="175px" height="80px"></label>
-                </td>
-                <td>
-                    <input type="radio" id="icici" name="NetBanking" value="icici">
-                    <label for="icici"><span>Icici:</span><img src="Images/icici.jpg" width="175px"
-                            height="80px"></label>
-                </td>
-                <td><input type="radio" id="axis" name="NetBanking" value="asix">
-                    <label for="asix"><span>Axis:</span><img src="Images/axis.png" width="175px" height="80px"></label>
-                </td>
-            </tr>
-            <tr>
-                <th>UPI Payment:</th>
-                <td><input type="radio" id="bhim" name="upi" value="bhim">
-                    <label for="bhim"><span>Bhim:</span><img src="Images/bhim.png" width="175px" height="80px"></label>
-                </td>
-                <td><input type="radio" id="googlepay" name="upi" value="googlepay">
-                    <label for="googlepay"><span>GooglePay:</span><img src="Images/google.png" width="175px"
-                            height="80px"></label>
-                </td>
-                <td><input type="radio" id="phonepe" name="upi" value="phonepe">
-                    <label for="phonepe"><span>PhonePe:</span><img src="Images/phone.png" width="175px"
-                            height="80px"></label>
-                </td>
-            </tr>
-        </table>
-        <div>
-            <a href="#" class="btn btn-block btn-primary">
-                <span>CASH ON DELIVIERY:<img src="Images/cash.jpg" width="175px" height="80px"></span>
-            </a>
-
-        </div>
-
-
+        <tr>
+          <th>Net Banking</th>
+          <td>
+            <input type="radio" id="sbi" name="NetBanking" value="sbi" />
+            <label for="sbi"
+              ><span>Sbi:</span
+              ><img src="Images/sbi.png" width="175px" height="80px"
+            /></label>
+          </td>
+          <td>
+            <input type="radio" id="icici" name="NetBanking" value="icici" />
+            <label for="icici"
+              ><span>Icici:</span
+              ><img src="Images/icici.jpg" width="175px" height="80px"
+            /></label>
+          </td>
+          <td>
+            <input type="radio" id="axis" name="NetBanking" value="asix" />
+            <label for="asix"
+              ><span>Axis:</span
+              ><img src="Images/axis.png" width="175px" height="80px"
+            /></label>
+          </td>
+        </tr>
+        <tr>
+          <th>UPI Payment:</th>
+          <td>
+            <input type="radio" id="bhim" name="upi" value="bhim" />
+            <label for="bhim"
+              ><span>Bhim:</span
+              ><img src="Images/bhim.png" width="175px" height="80px"
+            /></label>
+          </td>
+          <td>
+            <input type="radio" id="googlepay" name="upi" value="googlepay" />
+            <label for="googlepay"
+              ><span>GooglePay:</span
+              ><img src="Images/google.png" width="175px" height="80px"
+            /></label>
+          </td>
+          <td>
+            <input type="radio" id="phonepe" name="upi" value="phonepe" />
+            <label for="phonepe"
+              ><span>PhonePe:</span
+              ><img src="Images/phone.png" width="175px" height="80px"
+            /></label>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <a href="#" class="btn btn-block btn-primary">
+          <span
+            >CASH ON DELIVIERY:<img
+              src="Images/cash.jpg"
+              width="175px"
+              height="80px"
+          /></span>
+        </a>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
